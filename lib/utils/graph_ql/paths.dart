@@ -1,0 +1,8 @@
+
+
+class Paths {
+
+  //  API ENDPOINTS
+
+
+}
