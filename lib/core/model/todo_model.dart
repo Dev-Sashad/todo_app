@@ -56,10 +56,12 @@ class Tasks {
   Tasks.fromJson(Map<String, dynamic> json) {
     if (json["id"] is String) this.id = json["id"];
     if (json["developer_id"] is String) this.developerId = json["developer_id"];
-    if (json["description"] is String) this.description = json["description"];
+    if (json["description"] is String)
+      this.description = json["description"] ?? "";
     if (json["created_at"] is String) this.createdAt = json["created_at"];
-    if (json["isCompleted"] is bool) this.isCompleted = json["isCompleted"];
-    if (json["title"] is String) this.title = json["title"];
+    if (json["isCompleted"] is bool)
+      this.isCompleted = json["isCompleted"] ?? false;
+    if (json["title"] is String) this.title = json["title"] ?? "";
     if (json["updated_at"] is String) this.updatedAt = json["updated_at"];
   }
 

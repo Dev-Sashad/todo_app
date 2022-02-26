@@ -3,7 +3,6 @@ import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 import 'package:todo_app/utils/enum.dart';
 import 'package:todo_app/utils/helpers.dart';
-import '../../../core/model/todo_model.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/screensize.dart';
 import '../../widget/todo_tile.dart';
@@ -18,8 +17,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeVm>.reactive(
-        onModelReady: (v) {
-          v.getdata(context);
+        onModelReady: (v) async {
+          await v.getdata(context);
         },
         viewModelBuilder: () => HomeVm(),
         builder: (context, vm, child) {
@@ -36,8 +35,6 @@ class _HomePageState extends State<HomePage> {
                       return TodoTile(
                         index: i,
                         data: vm.tasks[i],
-                        // check: vm.updateMarked(vm.tasks[i], context),
-                        // unCheck: vm.updateUnMarked(vm.tasks[i], context),
                       );
                     }),
               ),
