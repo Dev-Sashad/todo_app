@@ -88,10 +88,16 @@ class _CreateTaskState extends State<CreateTask> {
                           loading: vm.busy == LoadingState.LOADING,
                           buttonText: 'Save',
                           onPressed: () {
-                            if (widget.isNew!) {
-                              vm.postTask(widget.data!, context);
+                            if (vm.title.text.isNotEmpty &&
+                                vm.desc.text.isNotEmpty) {
+                              if (widget.isNew!) {
+                                vm.postTask(widget.data!, context);
+                              } else {
+                                vm.updateTask(widget.data!, context);
+                              }
                             } else {
-                              vm.updateTask(widget.data!, context);
+                              showErrorSnackbar(
+                                  "Ooops", "Kindly fill empty fields", context);
                             }
                           },
                         )
