@@ -88,8 +88,8 @@ class _CreateTaskState extends State<CreateTask> {
                           loading: vm.busy == LoadingState.LOADING,
                           buttonText: 'Save',
                           onPressed: () {
-                            if (vm.title.text.isNotEmpty &&
-                                vm.desc.text.isNotEmpty) {
+                            if (vm.title.text.trim().isNotEmpty &&
+                                vm.desc.text.trim().isNotEmpty) {
                               if (widget.isNew!) {
                                 vm.postTask(widget.data!, context);
                               } else {
